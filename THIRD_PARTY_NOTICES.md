@@ -1,17 +1,21 @@
 # Third-party notices
 
-## Rime pinyin-simp abbreviation data
+## Rime pinyin-simp exact and abbreviation data
 
-The file `data/pinyin_abbr_data.lua`, and the base candidates retained in the
-merged abbreviation table of `data/phrase_overlay.lua`, contain initials-based
-Simplified Chinese pinyin phrase data generated from
+The files `data/pinyin_data.lua` and `data/pinyin_abbr_data.lua`, and the base
+candidates retained in the merged abbreviation table of
+`data/phrase_overlay.lua`, contain exact and initials-based Simplified Chinese
+pinyin data generated from
 [`rime/rime-pinyin-simp`](https://github.com/rime/rime-pinyin-simp).
 
 - Upstream license: Apache License 2.0
 - Imported through: `koreader/koreader` pull request #15610
 - Pinned KOReader commit: `66ef609fbc5eab059ee07930a71f4300f8d37065`
-- Vendored file SHA-256:
-  `234e5a2cd582a161a48494068ec9e57171193763782efcd0f0b21977e8817dc9`
+- Vendored file SHA-256 values:
+  - `data/pinyin_data.lua`:
+    `231d810693602a12a1309097d3c68820c71c46f546a6cc12cfb67b057b2a2443`
+  - `data/pinyin_abbr_data.lua`:
+    `234e5a2cd582a161a48494068ec9e57171193763782efcd0f0b21977e8817dc9`
 - Local change: the data remains unchanged; the input engine reads at most the
   first 10 candidates for each abbreviation.
 
@@ -98,11 +102,12 @@ The complete Wanxiang CC-BY-4.0 license is included in `LICENSE.wanxiang`.
 `data/academic_supplement.sqlite3` is a separate, read-only fallback database
 for ordinary and academic terms. The runtime queries it only when the
 byte-identical main `phrase` result contains fewer rows than the requested
-candidate limit. The generated artifact contains 560,885 rows, is 29,491,200
-bytes, and has SHA-256
-`6fa88bd7054021a28baa4ce1bc8f716a97499f840139e7987bb4ad0eb0fa953b`.
+candidate limit. The generated artifact contains 560,885 logical baseline rows
+plus the licensed extension documented below, is 54,235,136 bytes, and has
+SHA-256
+`5f55c271579776d781e56fe788cd92331dee4d7deedbabec1ac0b09d870a4303`.
 The unchanged parent `data/wanxiang.sqlite3` has SHA-256
-`f96f3e687793366a2a601acb174563cf2aed0a1c4bcdd0fe1152d0f544374638`.
+`fe029542646e2cb78d1ff264d2737a8262603279df4629d6898e60266963b6d5`.
 
 The preferred forms for modification are `tools/academic_lexicon.tsv`
 (SHA-256
@@ -159,6 +164,50 @@ redistributors must preserve attribution, indicate modifications, provide the
 license, and comply with ShareAlike for the CC-BY-SA-covered material. The
 complete CC-BY-SA-4.0 legal code is included in
 `LICENSE.cc-by-sa-4.0`.
+
+## Metasequoia-inspired licensed phrase and mixed-pinyin extension
+
+The `licensed_phrase_extension`, `mixed_candidate`, and `mixed_head` tables in
+`data/academic_supplement.sqlite3`, together with `data/mixed_head.bloom`, are
+modified, offline-compiled artifacts. They add 12,252 baseline-missing
+`(pinyin, text)` pairs and a collision-filtered full-syllable/initial mixed
+index. The Bloom file is 262,144 bytes and has SHA-256
+`1623582ecc3b19e193a93882e500ddabe5db1ec9f4884976f4fa4e3ba5b6384f`.
+
+The shipped word rows are selected only from these GPL-3.0 sources:
+
+- [Rime Ice](https://github.com/iDvel/rime-ice), commit
+  `75e6572bebc05b49021e842949ce947882e3e4b2`. The exact `LICENSE`,
+  `cn_dicts/base.dict.yaml`, `cn_dicts/ext.dict.yaml`, and
+  `cn_dicts/others.dict.yaml` hashes are pinned in
+  `tools/metasequoia_source_manifest.json`.
+- [Rime Frost](https://github.com/gaboolic/rime-frost), commit
+  `7a7c311efee1d8d0884624677a1f7f99cade457f`. Only the bounded animal,
+  computer, hot-term, geography, history, idiom, industry/product,
+  input-method, literature, media, medication, music, and sport files listed
+  in that manifest are eligible; medication additionally requires source
+  weight 5 or greater.
+
+The Rime Ice notice is included in `LICENSE.rime-ice`; it points to the complete
+GPL-3.0 text already shipped as `LICENSE.rime-double-pinyin`. Rime Frost's copy
+is included in `LICENSE.rime-frost`, and the plugin `LICENSE` also contains the
+GPL-3.0 text. The local build keeps
+only 2–8 Han-character rows with explicit, aligned, known pinyin syllables,
+removes exact pairs already present in the two baseline tables, de-duplicates
+by `(pinyin, text)`, and caps both ordinary and mixed candidate lists.
+
+[MetasequoiaImeTsf](https://github.com/metasequoiaime/MetasequoiaImeTsf),
+commit `ffe90560cd719a095ccd73dafa09ee370ced51c9`, is the GPL-3.0 design
+reference for offline dictionary compilation and bounded length/initial
+partitioning. No TSF or Server code is copied into the plugin.
+[MetasequoiaImeDict](https://github.com/metasequoiaime/MetasequoiaImeDict),
+commit `02b798a89c90ec79dcf923d076d871ab326f6ad3`, is used only for a
+non-authoritative exact-pair analysis cross-check. Because that combined
+repository does not declare a top-level redistribution license, it cannot
+select, rank, or contribute any shipped row. Its
+CustomPinyinDictionary-derived content is likewise excluded. The full source
+boundary, file hashes, filters, and reproducible counts are recorded in
+`tools/metasequoia_source_manifest.json` and the final optimization report.
 
 ## Locally authored CC0 prediction material
 
