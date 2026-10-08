@@ -1,12 +1,12 @@
 {
-  "latest": "v1.2.0",
-  "version": "v1.2.0",
-  "released_at": "2026-08-24",
-  "download_url": "https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.2.0/pinyinime.koplugin-v1.2.0.zip",
-  "release_page": "https://github.com/Merpyzf/pinyinime.koplugin/releases/tag/v1.2.0",
-  "sha256": "14047ed2638c32637c1dbc831f676967a221548f435443815b1c223881f4bbcb",
-  "archive_size_bytes": 63312207,
-  "installed_size_bytes": 177936925,
+  "latest": "v1.3.3",
+  "version": "v1.3.3",
+  "released_at": "2026-10-09",
+  "download_url": "https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.3.3/pinyinime.koplugin-v1.3.3.zip",
+  "release_page": "https://github.com/Merpyzf/pinyinime.koplugin/releases/tag/v1.3.3",
+  "sha256": "bca93d82f4e47f16fc98f35b8676684c6861410f5974d8896d3a933fa1db9e8a",
+  "archive_size_bytes": 64150843,
+  "installed_size_bytes": 178434508,
   "minimum_koreader": "v2025.10",
-  "notes_url": "https://github.com/Merpyzf/pinyinime.koplugin/blob/main/versions/v1.2.0.md"
+  "notes_url": "https://github.com/Merpyzf/pinyinime.koplugin/blob/main/versions/v1.3.3.md"
 }
