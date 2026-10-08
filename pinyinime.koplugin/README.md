@@ -216,3 +216,4 @@ koreader/settings/chinesepinyin.lua
 插件程序按 [GNU Affero General Public License v3.0](LICENSE) 发布。词库、双拼规则和生成数据包含不同许可证的第三方材料；再分发时必须同时保留相应许可证和归属说明，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 感谢 KOReader 项目提供简体中文键盘、输入框、插件接口和电纸书运行环境；感谢 Wanxiang、Rime、Jieba、THUOCL、CC-CEDICT、中文维基百科及其他列明来源的维护者与贡献者。
+
