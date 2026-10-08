@@ -4,7 +4,7 @@
 
 Pinyin IME 沿用 KOReader 的简体中文和英文键盘、输入框与按键交互，在中文侧提供拼音候选、混拼、整句输入、双拼与后续词联想，在英文侧提供离线单词补全和本地学习排序。插件不会替换 KOReader 的其他键盘布局。
 
-**当前版本：v1.3.3** · [下载完整插件包](https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.3.3/pinyinime.koplugin-v1.3.3.zip) · [版本说明](versions/v1.3.3.md)
+**当前版本：v1.3.3** · [下载完整插件包](https://github.com/yisichen1999-hue/pinyinime.koplugin/releases/download/v1.3.3/pinyinime.koplugin-v1.3.3.zip) · [版本说明](versions/v1.3.3.md)
 
 ## 上游项目与致谢
 
@@ -87,7 +87,7 @@ Pinyin IME 是 KOReader 简体中文输入法的增强层，不是另一套键�
 
 ## 安装
 
-1. 下载 [v1.3.3 完整插件包](https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.3.3/pinyinime.koplugin-v1.3.3.zip)。
+1. 下载 [v1.3.3 完整插件包](https://github.com/yisichen1999-hue/pinyinime.koplugin/releases/download/v1.3.3/pinyinime.koplugin-v1.3.3.zip)。
 2. 解压压缩包，得到顶层文件夹 `pinyinime.koplugin/`。
 3. 用 USB 将阅读器连接到电脑，把整个文件夹复制到 `koreader/plugins/`。
 4. 确认最终路径为 `koreader/plugins/pinyinime.koplugin/main.lua`，不要多套一层同名目录。
@@ -226,3 +226,4 @@ koreader/settings/chinesepinyin.lua
 
 
 > 源码仓库为避免纳入大型预编译 SQLite 词库而省略这两个数据文件；完整可安装包（包含词库）请从上方 GitHub Release 下载。
+
