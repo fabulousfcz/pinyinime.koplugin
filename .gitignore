@@ -2,3 +2,7 @@
 ._*
 *.zip
 .release/
+
+# Large prebuilt lexicon databases are distributed in the complete Release ZIP.
+pinyinime.koplugin/data/wanxiang.sqlite3
+pinyinime.koplugin/data/academic_supplement.sqlite3

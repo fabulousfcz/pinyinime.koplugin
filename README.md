@@ -2,9 +2,13 @@
 
 > 基于 KOReader 内置简体中文输入法的拼音增强插件。
 
-Pinyin IME 沿用 KOReader 的简体中文键盘、输入框与按键交互，在原有输入体验上增加候选栏、完整词库、混拼、整句输入、双拼、个性化学习和后续词联想。插件只在简体中文键盘生效，不会替换 KOReader 的其他键盘布局。
+Pinyin IME 沿用 KOReader 的简体中文和英文键盘、输入框与按键交互，在中文侧提供拼音候选、混拼、整句输入、双拼与后续词联想，在英文侧提供离线单词补全和本地学习排序。插件不会替换 KOReader 的其他键盘布局。
 
-**当前版本：v1.2.0**　·　[下载插件](https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.2.0/pinyinime.koplugin-v1.2.0.zip)　·　[查看版本说明](https://github.com/Merpyzf/pinyinime.koplugin/releases/tag/v1.2.0)
+**当前版本：v1.3.3** · [下载完整插件包](https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.3.3/pinyinime.koplugin-v1.3.3.zip) · [版本说明](versions/v1.3.3.md)
+
+## 上游项目与致谢
+
+本插件基于 [Merpyzf 的 KOReader 拼音输入法项目](https://github.com/Merpyzf/pinyinime.koplugin) 开发。感谢原作者创建并开源这个项目，以及 KOReader 社区提供的输入框架。本仓库在原有中文拼音输入功能上继续改进了中英文键盘往返切换、英文离线候选与本地学习，并修复了英文候选初始化问题；这些改动不应被误认为原作者最初实现的功能。原项目及词库、规则所用第三方材料的许可证和来源继续保留，详见 [许可证与第三方声明](THIRD_PARTY_NOTICES.md)。
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Merpyzf/pinyinime.koplugin/main/assets/screenshots/v1.0.0/input-candidates.png" width="520" alt="全拼输入 nihaoshijie 时显示你好世界整句候选和紧凑候选栏">
@@ -17,7 +21,7 @@ Pinyin IME 沿用 KOReader 的简体中文键盘、输入框与按键交互，�
 Pinyin IME 是 KOReader 简体中文输入法的增强层，不是另一套键盘。
 
 - 继续使用 KOReader 自带的简体中文键盘、输入框和按键反馈。
-- 在简体中文键盘启用时接管拼音候选与提交；英文和其他语言键盘保持原样。
+- 在简体中文键盘上提供拼音候选；英文键盘上提供常见单词补全，选词记录仅保存在设备本地。
 - 输入方案统一放在插件设置和长按空格的方案选择中，避免与键盘布局菜单重复。
 - 插件停用或移除后，相关接管会被完整撤销，KOReader 恢复原有输入行为和菜单。
 - KOReader 仍负责插件启用、停用和加载；插件本身不另设启停开关。
@@ -83,15 +87,15 @@ Pinyin IME 是 KOReader 简体中文输入法的增强层，不是另一套键�
 
 ## 安装
 
-1. 下载 [pinyinime.koplugin-v1.2.0.zip](https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.2.0/pinyinime.koplugin-v1.2.0.zip)。
+1. 下载 [v1.3.3 完整插件包](https://github.com/Merpyzf/pinyinime.koplugin/releases/download/v1.3.3/pinyinime.koplugin-v1.3.3.zip)。
 2. 解压压缩包，得到顶层文件夹 `pinyinime.koplugin/`。
 3. 用 USB 将阅读器连接到电脑，把整个文件夹复制到 `koreader/plugins/`。
 4. 确认最终路径为 `koreader/plugins/pinyinime.koplugin/main.lua`，不要多套一层同名目录。
 5. 安全弹出阅读器，然后重启 KOReader。
 6. 在 KOReader 中启用“简体中文”键盘布局。
-7. 进入 `设置 → 设备 → 键盘 → 拼音输入法`，确认菜单中显示 `版本：v1.2.0`。
+7. 进入 `设置 → 设备 → 键盘 → 拼音输入法`，确认菜单中显示 `版本：v1.3.3`。
 
-发布包解压后约占 170 MiB。考虑复制过程和后续升级，建议设备至少预留 220 MiB 可用空间；精确大小和校验值见 [v1.2.0 版本记录](versions/v1.2.0.md)。
+发布包解压后约占 171 MiB。考虑复制过程和后续升级，建议设备至少预留 220 MiB 可用空间；精确大小和校验值见 [v1.3.3 版本记录](versions/v1.3.3.md)。
 
 ## 升级
 
@@ -123,7 +127,13 @@ Pinyin IME 是 KOReader 简体中文输入法的增强层，不是另一套键�
 | 按退格 | 逐步删除尚未提交的拼音 |
 | 按回车 | 提交原始字母 |
 | 长按空格 | 快速选择全拼或双拼方案 |
-| 切换到英文键盘 | 暂停拼音接管，使用 KOReader 原始英文输入 |
+| 短按地球键 | 在简体中文与英文键盘之间来回切换 |
+| 长按地球键 | 打开 KOReader 原有的键盘布局选择 |
+| 在屏幕键盘输入英文单词前缀（至少 2 个字母） | 候选栏显示高频补全词，点击候选即可补全并加空格 |
+| 点选英文补全词 | 记录本地偏好，让常用选择逐渐靠前 |
+| 切换到英文键盘 | 使用英文补全候选栏；数字和密码输入框不显示候选 |
+
+本地修改版在英文与简体中文键盘上接管短按地球键，直接在 `en` 与 `zh_CN` 之间往返切换，不依赖两种布局同时出现在启用列表中。长按仍保留 KOReader 原有布局选择；当前为其他键盘布局时，短按仍由 KOReader 决定。停用插件会恢复原有地球键行为。
 
 ## 设置
 
@@ -132,7 +142,7 @@ Pinyin IME 是 KOReader 简体中文输入法的增强层，不是另一套键�
 | 设置 | 用途 | 适用场景 |
 | --- | --- | --- |
 | 输入方案 | 选择全拼或五种双拼；当前方案显示在菜单标题中 | 日常切换输入习惯；也可长按空格快速选择 |
-| 个性化学习 | 控制个人候选排序、个人后续词关联和会话学习 | 公用设备、临时输入或希望固定词库排序时可关闭 |
+| 个性化学习 | 控制中文个人候选排序、个人后续词关联及英文补全排序 | 公用设备、临时输入或希望固定词库排序时可关闭 |
 | 后续词联想 | 控制提交后的后续词候选 | 连续输入短句时开启；希望提交后立即清空候选栏时关闭 |
 | 高级设置 → 词库模式 | “自动”使用完整万象词库并在异常时回退；“兼容词库”直接使用轻量词库 | 排查数据库或设备兼容问题 |
 | 运行状态与诊断 | 显示运行状态、兼容性验证、输入方案、实际词库模式和两个功能开关 | 安装核对、升级验证和故障反馈 |
@@ -153,7 +163,7 @@ Pinyin IME 是 KOReader 简体中文输入法的增强层，不是另一套键�
 - 键盘：仅接管 KOReader 简体中文虚拟键盘。
 - 设备：面向可运行上述 KOReader 版本、并有足够存储空间的 Kindle 与其他电纸书设备。
 
-遇到不受支持的接口或运行时错误时，插件会停用本次会话的增强层并恢复 KOReader 原始输入，以避免影响其他输入框。
+遇到不受支持的接口或中文输入运行时错误时，插件会停用本次会话的增强层并恢复 KOReader 原始输入。英文候选属于可选界面；英文候选栏无法初始化或绘制时，会保留英文键盘与地球键中英切换，并在日志中记录原因。
 
 ## 数据位置
 
@@ -174,6 +184,10 @@ koreader/settings/chinesepinyin.lua
 ### “实际词库模式”显示兼容词库
 
 插件在完整数据库打不开、校验不通过或 SQLite 能力不满足时会自动回退。请重新复制完整发布包，确认 `data/wanxiang.sqlite3` 和 `data/academic_supplement.sqlite3` 均存在，并查看“运行状态与诊断”的技术详情。
+
+### 英文键盘没有显示补全词
+
+英文候选只在普通文本输入框的英文键盘上显示，密码和数字输入框会隐藏候选。输入至少两个英文字母作为当前词前缀后，候选栏才会开始补全。
 
 ### 关闭个性化学习会删除记录吗
 
@@ -206,3 +220,9 @@ koreader/settings/chinesepinyin.lua
 插件程序按 [GNU Affero General Public License v3.0](LICENSE) 发布。词库、双拼规则和生成数据包含不同许可证的第三方材料；再分发时必须同时保留相应许可证和归属说明，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 感谢 KOReader 项目提供简体中文键盘、输入框、插件接口和电纸书运行环境；感谢 Wanxiang、Rime、Jieba、THUOCL、CC-CEDICT、中文维基百科及其他列明来源的维护者与贡献者。
+
+
+
+
+
+> 源码仓库为避免纳入大型预编译 SQLite 词库而省略这两个数据文件；完整可安装包（包含词库）请从上方 GitHub Release 下载。
